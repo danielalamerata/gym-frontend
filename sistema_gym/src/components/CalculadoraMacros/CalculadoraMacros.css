@@ -1,0 +1,67 @@
+.macro-card {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.macro-card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.inputs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.inputs select,
+.inputs input {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #2b374a;
+  background: #0b1225;
+  color: var(--text);
+}
+
+.inputs button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  background-color: #17c4b1;
+  color: #001018;
+  cursor: pointer;
+}
+
+.inputs .btn-reset {
+  background: #2b374a;
+  color: var(--text);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #2b374a;
+}
+
+.totales {
+  background: #0b1225;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-size: 15px;
+}
+
+.totales h3 {
+  margin-top: 0;
+}

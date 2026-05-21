@@ -1,0 +1,28 @@
+.sidebar-login {
+  background-color: #223447; /* azul oscuro */
+  color: #fff;
+  width: 40%;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.brand h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+}
+
+.login-img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 8px;
+}

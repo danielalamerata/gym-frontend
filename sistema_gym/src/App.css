@@ -1,0 +1,23 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --subtle: #9ca3af;
+  --brand: #38bdf8;
+  --brand-2: #22d3ee;
+  --ok: #22c55e;
+  --err: #ef4444;
+  --radius: 12px;
+  --shadow: 0 4px 18px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+button {
+  cursor: pointer;
+}

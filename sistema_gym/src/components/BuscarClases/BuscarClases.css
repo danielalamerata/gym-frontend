@@ -1,0 +1,85 @@
+.buscar-card {
+  background: var(--panel);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Filtros arriba de la tabla */
+.buscar-card .filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: center; /* centro los filtros  */
+}
+
+.buscar-card input,
+.buscar-card select {
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  border: 1px solid #2b374a;
+  background: #0b1225;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+/* Tabla general */
+.buscar-card table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center; /* centra todo el texto en horizontal */
+}
+
+/* Encabezados y celdas */
+.buscar-card th,
+.buscar-card td {
+  padding: 10px;
+  border-bottom: 1px solid #2b374a;
+  vertical-align: middle; /* centro verticalmente */
+}
+
+/* Encabezado */
+.buscar-card th {
+  background-color: #14b8a6;
+  color: #001018;
+  font-weight: 800;
+}
+
+
+.buscar-card tr:nth-child(even) {
+  background-color: #121b2e;
+}
+
+.buscar-card tr:nth-child(odd) {
+  background-color: #0b1225;
+}
+
+.buscar-card tr:hover {
+  background-color: #1c2944;
+  transition: 0.2s;
+}
+
+/* Botón dentro de tabla */
+.buscar-card button {
+  background-color: #14b8a6;
+  color: #001018;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buscar-card button:hover {
+  background-color: #17c4b1;
+  transform: scale(1.05);
+}
+
+/* para aasegura que todo quede centrado */
+.buscar-card td,
+.buscar-card th {
+  text-align: center;
+  vertical-align: middle;
+}

@@ -1,0 +1,17 @@
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  background: #051126;
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid #1f2937;
+  animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

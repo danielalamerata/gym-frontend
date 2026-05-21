@@ -1,0 +1,25 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: #edf0f1;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 20px 40px;
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  color: #223447;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}

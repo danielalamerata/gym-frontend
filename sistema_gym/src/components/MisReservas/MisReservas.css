@@ -1,0 +1,81 @@
+.reservas-card {
+  background: var(--panel); 
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Título */
+.reservas-card h2 {
+  color: var(--text);
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+/* Tabla */
+.reservas-card table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center; /* centra contenido horizontalmente */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Encabezado */
+.reservas-card th {
+  background-color: #14b8a6;
+  color: #001018;
+  font-weight: 800;
+  padding: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Celdas */
+.reservas-card td {
+  padding: 10px;
+  border-bottom: 1px solid #2b374a;
+  color: var(--text);
+  vertical-align: middle; /* centra verticalmente */
+  text-align: center;
+}
+
+/* Filas */
+.reservas-card tr:nth-child(even) {
+  background-color: #121b2e;
+}
+
+.reservas-card tr:nth-child(odd) {
+  background-color: #0b1225;
+}
+
+.reservas-card tr:hover {
+  background-color: #1c2944;
+  transition: 0.2s;
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+  background-color: #14b8a6;
+  color: #001018;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cancelar:hover {
+  background-color: #f43f5e;
+  transform: scale(1.05);
+}
+
+/* Mensaje cuando no hay reservas */
+.reservas-empty {
+  text-align: center;
+  padding: 20px;
+  background-color: #0b1225;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+}

@@ -1,0 +1,102 @@
+.admin-form {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+  max-width: 560px;
+  place-items : center
+}
+
+.admin-form h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.admin-form form {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-form label {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.admin-form input,
+.admin-form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #2b374a;
+  background: #0b1225;
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.admin-form input:focus,
+.admin-form select:focus {
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, .2);
+}
+
+.admin-form .fila-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.admin-form .dias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  background: #0b1225;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #2b374a;
+}
+
+.admin-form .dias label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #cbd5e1;
+  font-weight: 500;
+  margin: 0;
+}
+
+.admin-form .acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.admin-form button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-form .btn-primario {
+  background: #14b8a6;
+  color: #001018;
+}
+
+.admin-form .btn-secundario {
+  background: #2b374a;
+  color: var(--text);
+}
+
+.admin-form .ayuda {
+  font-size: 0.85rem;
+  color: #a8b3c7;
+}

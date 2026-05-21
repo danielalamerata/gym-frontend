@@ -1,0 +1,22 @@
+# Dueños globales (fallback): ambos
+* @tomasstauber @30605656
+
+# Dueño principal del módulo Admin
+/src/components/admin/** @tomasstauber
+/src/pages/AdminDashboard.* @tomasstauber
+
+# Dueño principal del módulo Socio
+/src/components/socio/** @30605656
+/src/pages/SocioDashboard.* @30605656
+
+# Auth y store compartidos: ambos
+/src/components/auth/** @tomasstauber
+@30605656
+/src/store/** @tomasstauber @30605656
+
+# UI común: ambos
+/src/components/common/** @tomasstauber @30605656
+
+# Utils/router: ambos
+/src/utils/** @tomasstauber @30605656
+/src/router.* @tomasstauber @30605656
