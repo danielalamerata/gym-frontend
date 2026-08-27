@@ -1,42 +1,53 @@
 import "./Register.css"
 import SidebarLogin from "../SideBarLogin/SideBarLogin.jsx"
 import { useState } from "react"
-import { LS, uid, findUserByEmailOrDni } from "../../utils/storage.js"
+import { apiPost } from "../../utils/api.js"
 
 export default function Register({ onRoute }) {
-  const planes = LS.get("planes", [])
   const [msg, setMsg] = useState("")
+  const [loading, setloading ] = useState(false)
   const [frm, setFrm] = useState({
     nombre: "",
     apellido: "",
     email: "",
     dni: "",
+    telefono: "",
     direccion: "",
-    pass: "",
-    planId: planes[0]?.id || ""
+    password: "",
+    pasword_confirmation: "",
+
   })
 
-  const validar = () => {
-    if (!planes.length) return { ok: false, msg: "No hay planes cargados." }
-    if (findUserByEmailOrDni(frm.dni) || findUserByEmailOrDni(frm.email))
-      return { ok: false, msg: "DNI o email ya registrado." }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(frm.email))
-      return { ok: false, msg: "Email inválido." }
-    if (!frm.pass || frm.pass.length < 4)
-      return { ok: false, msg: "La contraseña debe tener al menos 4 caracteres." }
-    return { ok: true }
-  }
-
-  const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault()
-    const v = validar()
-    if (!v.ok) return setMsg(v.msg)
+    setMsg("")
+    setloading(true)
 
-    const users = LS.get("users", [])
-    users.push({ id: uid("u"), ...frm, rol: "user" })
-    LS.set("users", users)
-    alert("Usuario registrado con éxito. Inicia sesión para continuar.")
-    onRoute("login")
+    try {
+      await apiPost("/register",{
+        name: `${frm.nombre} ${frm.apellido}`,
+        nombre: frm.nombre,
+        apellido: frm.apellido,
+        email: frm.email,
+        dni: frm.dni,
+        telefono: frm.telefono,
+        direccion: frm.direccion,
+        password: frm.password,
+        password_confirmation: frm.password_confirmation,
+      })
+      
+      alert("Registro exitoso. Por favor, inicia sesión para continuar.")
+      onRoute("login")
+    } catch (err) {
+      if (err.errors){
+        const primerError = Object.values(err.errors)[0][0]
+        setMsg(primerError)
+      } else {
+      setMsg("No se pudo conectar con el servidor. Intenta nuevamente más tarde.")
+    }
+    } finally {
+      setloading(false)
+    }
   }
 
   return (
@@ -60,27 +71,21 @@ export default function Register({ onRoute }) {
             <label>DNI</label>
             <input value={frm.dni} onChange={(e) => setFrm({ ...frm, dni: e.target.value })} required />
 
+            <label>Telefono</label>
+            <input value={frm.telefono} onChange={(e) => setFrm({ ...frm, telefono: e.target.value })} />
+
             <label>Dirección</label>
             <input value={frm.direccion} onChange={(e) => setFrm({ ...frm, direccion: e.target.value })} />
 
             <label>Contraseña</label>
-            <input type="password" value={frm.pass} onChange={(e) => setFrm({ ...frm, pass: e.target.value })} required />
+            <input type="password" value={frm.password} onChange={(e) => setFrm({ ...frm, password: e.target.value })} required />
 
-            <label>Selecciona un plan</label>
-            <select
-              value={frm.planId}
-              onChange={(e) => setFrm({ ...frm, planId: e.target.value })}
-              required
-            >
-              <option value="">-- Elegir plan --</option>
-              {planes.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.nombre} — máx. {p.max_clases} clases/semana
-                </option>
-              ))}
-            </select>
+            <label>Confirmar Contraseña</label>
+            <input type="password" value={frm.password_confirmation} onChange={(e) => setFrm({ ...frm, password_confirmation: e.target.value })} required />
 
-            <button type="submit" className="btn-register">Regístrate</button>
+            <button type="submit" className="btn-register" disabled={loading}>
+              {loading ? "Registrando..." : "Registrarse"}
+            </button>
           </form>
 
           {msg && <p className="error">{msg}</p>}
