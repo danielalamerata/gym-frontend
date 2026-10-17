@@ -7,7 +7,7 @@ import { useAuth } from "../../context/AuthContext.jsx"
 const s = (v) => String(v)
 
 export default function MiPlan() {
-  const { user, updateUserPlan } = useAuth()
+  const { user, updateUserPlan, logout } = useAuth()
   const planes = LS.get("planes", [])
 
   //el plan actual es el que coincide con el id del usuario
@@ -75,9 +75,8 @@ export default function MiPlan() {
     //Eliminar el usuario
     LS.set("users", LS.get("users", []).filter((u) => u.id !== user.id))
 
-    //Limpiar sesión y recargar para que la UI refleje los cambios
-    LS.set("session_user", null) // usa la misma clave que tu AuthContext
-    window.location.reload()
+    //Cerrar sesión para que la UI refleje los cambios
+    logout()
   }
 
   return (

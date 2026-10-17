@@ -1,4 +1,4 @@
-import "./SidebarLogin.css"
+import "./SideBarLogin.css"
 import imagenGym from '../../assets/mujer-fitness.jpg'
 
 export default function SidebarLogin() {
