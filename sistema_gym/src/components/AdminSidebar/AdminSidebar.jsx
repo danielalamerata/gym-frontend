@@ -4,6 +4,7 @@ export default function AdminSidebar({ active, onSelect, onLogout }) {
   const opciones = [
     { id: "clases", label: "Clases" },
     { id: "socios", label: "Socios" },
+    { id: "planes", label: "Planes" },
   ]
 
   return (
