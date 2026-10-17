@@ -1,57 +1,56 @@
 import { createContext, useContext, useState, useEffect } from "react"
-import { LS } from "../utils/storage.js"
+import { apiGet, apiPost, getToken, setToken } from "../utils/api.js"
 
 const AuthCtx = createContext(null)
 
 export function AuthProvider({ children }) {
-  //Cargamos usuario desde la persistencia
-  const [user, setUser] = useState(LS.get("session_user", null))
+  const [user, setUser] = useState(null)
+  //Mientras se valida el token guardado no se muestra la app
+  const [checking, setChecking] = useState(!!getToken())
 
-  //Refresca sesión desde localStorage
-  const refresh = () => setUser(LS.get("session_user", null))
-
-  //Guarda sesión cada vez que cambia
-  useEffect(() => {
-    if (user) LS.set("session_user", user)
-  }, [user])
-
-const login = (ident, password) => {
-  const users = LS.get("users", [])
-
-  //Validaciones de email-dni y password
-  const found = users.find((u) => {
-    const sameIdent = (u.email === ident || u.mail === ident || u.dni === ident)
-    const samePass  = (u.password === password || u.pass === password)
-    return sameIdent && samePass
-  })
-
-  if (found) {
-    LS.set("session_user", found)
-    setUser(found)
-    return { ok: true, rol: found.rol || "user", user: found }
+  //Refresca sesión desde la API
+  const refresh = async () => {
+    try {
+      const res = await apiGet("/me")
+      setUser(res.user)
+    } catch (err) {
+      //Token vencido o revocado
+      if (err.status === 401) {
+        setToken(null)
+        setUser(null)
+      }
+    }
   }
 
-  return { ok: false }
-}
+  useEffect(() => {
+    if (getToken()) refresh().finally(() => setChecking(false))
+  }, [])
 
-  const logout = () => {
-    LS.set("session_user", null)
+  //Acepta email o DNI. Si falla, lanza el error de la API
+  const login = async (ident, password) => {
+    const res = await apiPost("/login", { login: ident, password })
+    setToken(res.token)
+    setUser(res.user)
+    return { ok: true, rol: res.user.rol, user: res.user }
+  }
+
+  const logout = async () => {
+    try {
+      await apiPost("/logout")
+    } catch {
+      //Si el token ya no era válido igual se cierra la sesión local
+    }
+    setToken(null)
     setUser(null)
   }
 
-//ctualiza el plan del usuario 
+  //Actualiza el plan del usuario (solo en memoria hasta migrar Planes)
   const updateUserPlan = (newPlanId) => {
     if (!user) return
-    const users = LS.get("users", [])
-    const updatedUsers = users.map((u) =>
-      u.id === user.id ? { ...u, planId: newPlanId } : u
-    )
-    LS.set("users", updatedUsers)
-
-    const updatedUser = { ...user, planId: newPlanId }
-    LS.set("session_user", updatedUser)
-    setUser(updatedUser)
+    setUser({ ...user, planId: newPlanId })
   }
+
+  if (checking) return null
 
   return (
     <AuthCtx.Provider

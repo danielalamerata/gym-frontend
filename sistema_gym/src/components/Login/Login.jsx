@@ -8,12 +8,26 @@ export default function Login({ onRoute }) {
   const [ident, setIdent] = useState("")
   const [pass, setPass] = useState("")
   const [msg, setMsg] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const res = login(ident.trim(), pass)
-    if (!res.ok) return setMsg("Credenciales inválidas")
-    onRoute(res.rol === "admin" ? "admin" : "user")
+    setMsg("")
+    setLoading(true)
+
+    try {
+      const res = await login(ident.trim(), pass)
+      onRoute(res.rol === "admin" ? "admin" : "user")
+    } catch (err) {
+      if (err.errors) {
+        const primerError = Object.values(err.errors)[0][0]
+        setMsg(primerError)
+      } else {
+        setMsg("No se pudo conectar con el servidor. Intenta nuevamente más tarde.")
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -41,7 +55,9 @@ export default function Login({ onRoute }) {
               required
             />
 
-            <button type="submit" className="btn-login">Iniciar Sesión</button>
+            <button type="submit" className="btn-login" disabled={loading}>
+              {loading ? "Ingresando..." : "Iniciar Sesión"}
+            </button>
           </form>
 
           {msg && <p className="error">{msg}</p>}
