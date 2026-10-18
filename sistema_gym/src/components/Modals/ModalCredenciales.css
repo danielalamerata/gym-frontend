@@ -1,0 +1,46 @@
+.credenciales {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  margin: 16px 0;
+  text-align: left;
+  color: #001018;
+}
+
+.credenciales dt {
+  font-weight: 700;
+  color: #223447;
+}
+
+.credenciales dd {
+  margin: 0;
+  word-break: break-all;
+}
+
+.credenciales-password {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #e7e7e7;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.modal-card .credenciales-aviso {
+  color: #b91c1c;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.modal-card .select-plan {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 10px;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+}
+
+.modal-card .btn-confirm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
