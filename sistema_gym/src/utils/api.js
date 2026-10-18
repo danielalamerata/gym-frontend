@@ -34,3 +34,5 @@ async function request(method, endpoint, data) {
 
 export const apiGet = (endpoint) => request("GET", endpoint)
 export const apiPost = (endpoint, data) => request("POST", endpoint, data)
+export const apiPut = (endpoint, data) => request("PUT", endpoint, data)
+export const apiDelete = (endpoint) => request("DELETE", endpoint)
