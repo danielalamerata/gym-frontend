@@ -54,3 +54,20 @@
   background-color: #b7f0e7;
   transition: 0.2s;
 }
+
+.buscador-socios {
+  width: 100%;
+  max-width: 360px;
+  margin: 12px 0;
+  padding: 10px 12px;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.plan-inactivo {
+  margin-left: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #b91c1c;
+}
