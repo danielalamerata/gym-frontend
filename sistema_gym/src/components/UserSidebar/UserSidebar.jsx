@@ -5,6 +5,7 @@ export default function UserSidebar({ onSelect, active, onLogout }) {
     { id: "buscar", label: "Buscar clases" },
     { id: "misclases", label: "Mis Clases" },
     { id: "miplan", label: "Mi Plan" },
+    { id: "mispagos", label: "Mis Pagos" },
     { id: "macros", label: "Calculadora de Macros" }
   ]
 

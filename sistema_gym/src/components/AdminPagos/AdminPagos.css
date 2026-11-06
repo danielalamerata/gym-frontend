@@ -1,0 +1,128 @@
+.pagos-vistas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.pagos-vista {
+  padding: 8px 16px;
+  border: 1px solid #223447;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #223447;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pagos-vista.activa {
+  background-color: #223447;
+  color: #fff;
+}
+
+.pagos-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.pagos-filtro-mes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #223447;
+  font-weight: 600;
+}
+
+.pagos-filtro-mes input {
+  padding: 9px 12px;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+}
+
+.socios-table tbody tr.pago-vencido td {
+  background-color: #fde2e2;
+}
+
+.pago-estado {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #001018;
+  white-space: nowrap;
+}
+
+.pago-estado.pagado { background-color: #c7f9cc; }
+.pago-estado.pendiente { background-color: #fff89a; }
+.pago-estado.vencido {
+  background-color: #b91c1c;
+  color: #fff;
+}
+
+.pago-cobrado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: #c7f9cc;
+  color: #001018;
+  font-weight: 600;
+}
+
+.pago-cobrado span {
+  flex: 1;
+}
+
+.pago-cobrado-cerrar {
+  border: none;
+  background: transparent;
+  color: #001018;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-view:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-card.cobro-card {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.cobro-form {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.cobro-form label {
+  display: grid;
+  gap: 4px;
+  color: #223447;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cobro-form input,
+.cobro-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+  background: #fff;
+  color: #001018;
+  color-scheme: light;
+}
+
+.cobro-error {
+  color: #b91c1c;
+  font-size: 0.85rem;
+}

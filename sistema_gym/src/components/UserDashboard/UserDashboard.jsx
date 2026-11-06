@@ -4,6 +4,7 @@ import UserSidebar from "../UserSidebar/UserSidebar.jsx"
 import BuscarClases from "../BuscarClases/BuscarClases.jsx"
 import MisReservas from "../MisReservas/MisReservas.jsx"
 import MiPlan from "../Miplan/MiPlan.jsx"
+import MisPagos from "../MisPagos/MisPagos.jsx"
 import CalculadoraMacros from "../CalculadoraMacros/CalculadoraMacros.jsx"
 import { useAuth } from "../../context/AuthContext.jsx"
 
@@ -30,6 +31,7 @@ export default function UserDashboard() {
         {seccion === "buscar" && <BuscarClases />}
         {seccion === "misclases" && <MisReservas />}
         {seccion === "miplan" && <MiPlan />}
+        {seccion === "mispagos" && <MisPagos />}
         {seccion === "macros" && <CalculadoraMacros />}
       </main>
     </div>
