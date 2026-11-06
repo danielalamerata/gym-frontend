@@ -5,6 +5,7 @@ export default function AdminSidebar({ active, onSelect, onLogout }) {
     { id: "clases", label: "Clases" },
     { id: "socios", label: "Socios" },
     { id: "planes", label: "Planes" },
+    { id: "pagos", label: "Pagos" },
   ]
 
   return (

@@ -6,6 +6,7 @@ import { useAuth } from "../../context/AuthContext.jsx"
 import AdminSidebar from "../AdminSidebar/AdminSidebar.jsx"
 import AdminSocios from "../AdminSocios/AdminSocios.jsx"
 import AdminPlanes from "../AdminPlanes/AdminPlanes.jsx"
+import AdminPagos from "../AdminPagos/AdminPagos.jsx"
 import AdminClasesForm from "../AdminClasesForm/AdminClasesForm.jsx"
 import ClaseDetalles from "../ClaseDetalles/ClaseDetalles.jsx"
 
@@ -121,6 +122,9 @@ export default function AdminDashboard() {
 
         {/* SECCIÓN PLANES */}
         {seccion === "planes" && <AdminPlanes />}
+
+        {/* SECCIÓN PAGOS */}
+        {seccion === "pagos" && <AdminPagos />}
       </main>
     </div>
   )
